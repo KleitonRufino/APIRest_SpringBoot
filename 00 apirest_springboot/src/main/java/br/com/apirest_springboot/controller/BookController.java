@@ -19,41 +19,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.apirest_springboot.services.PersonServices;
-import br.com.apirest_springboot.vo.PersonVO;
+import br.com.apirest_springboot.services.BookServices;
+import br.com.apirest_springboot.vo.BookVO;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
-//@Api(value = "PersonEndpoint", description = "REST API for Person", tags = { "PersonEndpoint" })
-@Api(tags = "PersonEndpoint")
+//@Api(value = "bookEndpoint", description = "REST API for book", tags = { "bookEndpoint" })
+@Api(tags = "BookEndpoint")
 @RestController
-@RequestMapping("/api/person/v1")
-public class PersonController {
+@RequestMapping("/api/book/v1")
+public class BookController {
 
 	@Autowired
-	private PersonServices service;
+	private BookServices service;
 
 	// path params
 	// @RequestMapping(method = RequestMethod.GET, produces =
 	// MediaType.APPLICATION_JSON_VALUE)
-	//@CrossOrigin(origins= {"http://localhost:8080"})
-	@ApiOperation(value = "Find all people records")
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
-	public List<PersonVO> findAll() {
-		List<PersonVO> persons = service.findAll();
-		persons.stream()
-				.forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
-		return persons;
+	public List<BookVO> findAll() {
+		List<BookVO> books = service.findAll();
+		books.stream()
+				.forEach(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
+		return books;
 	}
 
 	// path params
 	// @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces =
 	// MediaType.APPLICATION_JSON_VALUE)
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
-	public PersonVO findById(@PathVariable("id") Long id) {
-		PersonVO personVO = service.findById(id);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
-		return personVO;
+	public BookVO findById(@PathVariable("id") Long id) {
+		BookVO BookVO = service.findById(id);
+		BookVO.add(linkTo(methodOn(BookController.class).findById(id)).withSelfRel());
+		return BookVO;
 	}
 
 	// path params
@@ -62,16 +59,11 @@ public class PersonController {
 	// MediaType.APPLICATION_JSON_VALUE)
 	@PostMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, consumes = {
 			"application/json", "application/xml", "application/x-yaml" })
-	public PersonVO create(@RequestBody PersonVO person) {
-		PersonVO personVO = service.create(person);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel());
-		return personVO;
+	public BookVO create(@RequestBody BookVO book) {
+		BookVO BookVO = service.create(book);
+		BookVO.add(linkTo(methodOn(BookController.class).findById(BookVO.getKey())).withSelfRel());
+		return BookVO;
 	}
-
-//	@PostMapping("/v2")
-//	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
-//		return service.createV2(person);
-//	}
 
 	// path params
 	// @RequestMapping(method = RequestMethod.PUT, consumes =
@@ -79,10 +71,10 @@ public class PersonController {
 	// MediaType.APPLICATION_JSON_VALUE)
 	@PutMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, consumes = {
 			"application/json", "application/xml", "application/x-yaml" })
-	public PersonVO update(@RequestBody PersonVO person) {
-		PersonVO personVO = service.update(person);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel());
-		return personVO;
+	public BookVO update(@RequestBody BookVO book) {
+		BookVO BookVO = service.update(book);
+		BookVO.add(linkTo(methodOn(BookController.class).findById(BookVO.getKey())).withSelfRel());
+		return BookVO;
 	}
 
 	// path params
