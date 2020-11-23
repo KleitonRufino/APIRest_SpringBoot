@@ -33,6 +33,8 @@ public class PersonVO extends ResourceSupport implements Serializable {
 
 	@JsonIgnore
 	private String gender;
+	
+	private Boolean enabled;
 
 	public PersonVO() {
 		// TODO Auto-generated constructor stub
@@ -76,6 +78,14 @@ public class PersonVO extends ResourceSupport implements Serializable {
 
 	public void setKey(Long key) {
 		this.key = key;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }
