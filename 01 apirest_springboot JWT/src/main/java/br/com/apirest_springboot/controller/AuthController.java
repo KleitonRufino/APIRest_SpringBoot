@@ -24,6 +24,11 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
+	
+	/*
+	 * http://localhost:8080/auth/signin { "username":"joao", "password":"admin123"
+	 * }
+	 */
 
 	@Autowired
 	AuthenticationManager manager;
