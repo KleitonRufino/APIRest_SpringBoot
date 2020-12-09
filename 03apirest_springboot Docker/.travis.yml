@@ -2,14 +2,14 @@
 language: bash
 services: docker
 before_install:
-  - cd 03\ apirest_springboot Docker\ Docker/
+  - cd 03apirest_springboot Docker\ Docker/
   - echo "We are in the Docker folder!"
 script:
   - docker-compose build
 before_deploy:
   - echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
 deploy:
-  provider: script
+  provider:script
   script:
     docker push kleitonarufino/mysql-rest-with-spring-boot-docker;
     docker push kleitonarufino/rest-with-spring-boot-docker;
