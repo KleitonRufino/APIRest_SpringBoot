@@ -10,8 +10,8 @@ before_deploy:
 deploy:
   provider: script
   script:
-    docker push leandrocgsi/mysql-rest-with-spring-boot-udemy;
-    docker push leandrocgsi/rest-with-spring-boot-udemy;
+    docker push kleitonarufino/mysql-rest-with-spring-boot-docker;
+    docker push kleitonarufino/rest-with-spring-boot-docker;
   on:
     branch: master
 notifications:
