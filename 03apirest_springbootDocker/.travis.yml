@@ -2,7 +2,7 @@
 language: bash
 services: docker
 before_install:
-  - cd 03apirest_springbootDocker/
+  - cd 03apirest_springbootDocker
   - echo "We are in the Docker folder!"
 script:
   - docker-compose build
