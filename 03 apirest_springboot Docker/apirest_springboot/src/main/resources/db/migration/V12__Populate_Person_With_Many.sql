@@ -1,0 +1,10 @@
+insert into person (address, first_name, gender, last_name, enabled) values ('093 Oneill Alley', 'Kaye', 'Female', 'Wasbrough', true);
+insert into person (address, first_name, gender, last_name, enabled) values ('6 Ridgeway Place', 'Koressa', 'Female', 'Gadman', false);
+insert into person (address, first_name, gender, last_name, enabled) values ('704 Cambridge Plaza', 'Calhoun', 'Male', 'Staveley', false);
+insert into person (address, first_name, gender, last_name, enabled) values ('22 Melvin Court', 'Mable', 'Female', 'Navarro', false);
+insert into person (address, first_name, gender, last_name, enabled) values ('86619 Montana Trail', 'Rebbecca', 'Female', 'Bastock', true);
+insert into person (address, first_name, gender, last_name, enabled) values ('820 Hoard Court', 'Archibald', 'Male', 'Chaim', true);
+insert into person (address, first_name, gender, last_name, enabled) values ('42 Kedzie Pass', 'Westley', 'Male', 'Rosier', false);
+insert into person (address, first_name, gender, last_name, enabled) values ('1 Dayton Center', 'Donalt', 'Male', 'Glasper', false);
+insert into person (address, first_name, gender, last_name, enabled) values ('555 Wayridge Junction', 'Gearard', 'Male', 'Speller', true);
+insert into person (address, first_name, gender, last_name, enabled) values ('5 Milwaukee Plaza', 'Abraham', 'Male', 'Maha', false);
