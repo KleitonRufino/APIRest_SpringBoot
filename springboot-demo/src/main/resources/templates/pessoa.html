@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>ADD PESSOA</title>
+</head>
+<body>
+	ADD PESSOA
+	
+	<form th:action="@{/pessoas/salvar}"  th:object="${pessoa}" method="post">
+		<input type="hidden" th:field="*{id}" th:value="*{id}" />
+		<input type="text" th:field="*{nome}" th:value="*{nome}" />
+		<input type="text" th:field="*{email}" th:value="${email}"/>
+		<input type="text" th:field="*{telefone}" th:value="*{telefone}"/>
+		<button> Salvar </button>
+	</form>
+	
+	<a href="#" th:href="@{/pessoas/cancelar}">
+		<button>Cancelar</button>
+	</a>	
+</body>
+</html>
