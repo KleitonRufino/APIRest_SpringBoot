@@ -44,6 +44,7 @@ public class AuthController {
 	@PostMapping(value = "/signin", produces = { "application/json", "application/xml",
 			"application/x-yaml" }, consumes = { "application/json", "application/xml", "application/x-yaml" })
 	public ResponseEntity signin(@RequestBody AccountCredentialsVo data) {
+		System.out.println("Login: " + data.getUsername() + "," + data.getPassword());
 		try {
 			var username = data.getUsername();
 			var pasword = data.getPassword();

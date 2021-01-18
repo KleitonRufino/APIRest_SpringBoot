@@ -41,6 +41,8 @@ public class SecurityConfiger extends WebSecurityConfigurerAdapter{
 				.antMatchers("/api/**").authenticated()
 				.antMatchers("/users").denyAll()
 			.and()
+			.cors()
+			.and()
 			.apply(new JWTConfigurer(provider));
 	}
 	
