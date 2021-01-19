@@ -2,9 +2,10 @@ package freemaker;
 
 public class Produto {
 	private String nome;
-	private double preco;
-
-	public Produto(String nome, double preco) {
+	private Double preco;
+	private boolean ativo;
+	
+	public Produto(String nome, Double preco) {
 		super();
 		this.nome = nome;
 		this.preco = preco;
@@ -14,7 +15,22 @@ public class Produto {
 		return nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", preco=" + preco + ", ativo=" + ativo + "]";
+	}
+	
+	
 }
