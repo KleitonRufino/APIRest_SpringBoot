@@ -44,6 +44,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Collection<Product> getProducts() {
+		System.out.println("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
 		return productRepo.values();
 	}
 

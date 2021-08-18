@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import br.com.apirest_springboot.config.FileStorageConfig;
 
+
 @SpringBootApplication
 @EnableConfigurationProperties({
 	FileStorageConfig.class
