@@ -1,0 +1,6 @@
+- DOC SWAGGER da API: http://localhost:8080/swagger-ui.html
+- Obter Token JWT: POST http://localhost:8080/auth/signin | JSON BODY { "username": "admin", "password": "admin123" }
+- Usar token JWT nas requests com authorization Bearer
+- Obter faixas Ceps : GET http://localhost:8080/api/faixacep/v1
+- Cadastrar faixa Cep: POST http://localhost:8080/api/faixacep/v1
+- Buscar Cep: GET http://localhost:8080/api/faixacep/v1/{cep}

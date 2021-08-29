@@ -28,6 +28,17 @@ public class RestProductServiceController {
 				HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/products/{id}")
+	@CrossOrigin(origins = "http://localhost:8080")
+	public ResponseEntity<Object> getProducts(@PathVariable String id){
+		Product p = service.getProduct(id);
+		if(p != null)
+			return new ResponseEntity<>(p,
+				HttpStatus.OK);
+		else
+			return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+	}
+	
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
 	public ResponseEntity<Object> createProduct(@RequestBody Product product){
 		service.createProduct(product);

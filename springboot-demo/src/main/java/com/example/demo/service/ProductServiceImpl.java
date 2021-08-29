@@ -48,4 +48,9 @@ public class ProductServiceImpl implements ProductService{
 		return productRepo.values();
 	}
 
+	@Override
+	public Product getProduct(String id) {
+		return productRepo.containsKey(id) ? productRepo.get(id) : null;
+	}
+
 }
