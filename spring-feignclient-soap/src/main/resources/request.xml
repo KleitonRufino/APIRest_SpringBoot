@@ -1,0 +1,18 @@
+
+<v1:ConsultarAssinanteRequest
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:v1="http://www.claro.com.br/EBS/Claro/v1"
+	xmlns:v11="http://www.claro.com.br/EBO/Claro/v1">
+	<v1:assinante>
+		<v11:mobile-assinante-id>925419947</v11:mobile-assinante-id>
+	</v1:assinante>
+	<v1:meta-informacao>
+		<v11:codigo-aplicacao-origem>SOAP-UI</v11:codigo-aplicacao-origem>
+		<v11:codigo-operacao-origem>TESTE_UNITARIO</v11:codigo-operacao-origem>
+		<v11:correlacao-id-origem>0</v11:correlacao-id-origem>
+		<v11:endereco-aplicacao-origem>LOCALHOST</v11:endereco-aplicacao-origem>
+		<v11:usuario-id-origem>12000000</v11:usuario-id-origem>
+		<v11:data-hora-origem>2009-01-12T12:10:30-03:00</v11:data-hora-origem>
+		<v11:canal-id-origem>URA</v11:canal-id-origem>
+	</v1:meta-informacao>
+</v1:ConsultarAssinanteRequest>
