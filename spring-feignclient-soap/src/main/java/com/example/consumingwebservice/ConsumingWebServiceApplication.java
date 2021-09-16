@@ -30,26 +30,17 @@ public class ConsumingWebServiceApplication {
 
 	@Autowired
 	private ManagerProxy managerProxy;
-	
+
 	public static void main(String[] args) throws JAXBException {
 		SpringApplication.run(ConsumingWebServiceApplication.class, args);
-		
-//		String payload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"> <soapenv:Header> <mtrace:meta-trace xmlns:mtrace=\""> <mtrace:indicador-rastreabilidade>false</mtrace:indicador-rastreabilidade> </mtrace:meta-trace> </soapenv:Header> <soapenv:Body> </soapenv:Body> </soapenv:Envelope>";
-//		HttpResult result;
-//		try {
-//			result = doHttpCall("uri", payload, "user", "pwd");
-//			System.out.println(result.getResponse());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 	}
-
 
 	@Bean
 	CommandLineRunner lookup() {
 		return args -> {
 			try {
-				ConsultarAssinanteResponse consultarAssinanteResponse = this.managerProxy.consultarAssinante(Long.valueOf(925419947));
+				ConsultarAssinanteResponse consultarAssinanteResponse = this.managerProxy
+						.consultarAssinante(Long.valueOf(925419947));
 				System.out.println(consultarAssinanteResponse);
 			} catch (Throwable e) {
 				System.out.println("ERRO");
@@ -57,7 +48,20 @@ public class ConsumingWebServiceApplication {
 		};
 	}
 
-	
+//	@Bean
+//	CommandLineRunner lookup() {
+//		return args -> {
+//			String payload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"> <soapenv:Header> <mtrace:meta-trace xmlns:mtrace=\"\"> <mtrace:indicador-rastreabilidade>false</mtrace:indicador-rastreabilidade> </mtrace:meta-trace> </soapenv:Header> <soapenv:Body> </soapenv:Body> </soapenv:Envelope>";
+//			HttpResult result;
+//			try {
+//				result = doHttpCall("uri", payload, "user", "pwd");
+//				System.out.println(result.getResponse());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		};
+//	}
+
 	public static HttpResult doHttpCall(String uri, String payload, String user, String password) throws IOException {
 		HttpResult httpResult;
 		HttpRequestBase request = createPost(uri, payload, user, password);
