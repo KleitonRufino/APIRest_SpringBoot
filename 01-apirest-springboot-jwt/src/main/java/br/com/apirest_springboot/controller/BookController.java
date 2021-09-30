@@ -16,6 +16,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +45,8 @@ public class BookController {
 	private PagedResourcesAssembler<BookVO> assembler;
 	
 	
-	// path params
+	 @PreAuthorize("hasRole('MANAGER')")
+	 // path params
 	// @RequestMapping(method = RequestMethod.GET, produces =
 	// MediaType.APPLICATION_JSON_VALUE)
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
