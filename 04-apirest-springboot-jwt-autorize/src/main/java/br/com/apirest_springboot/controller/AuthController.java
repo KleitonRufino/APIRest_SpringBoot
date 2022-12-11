@@ -26,6 +26,7 @@ import br.com.apirest_springboot.model.User;
 import br.com.apirest_springboot.repository.PermissionRepository;
 import br.com.apirest_springboot.repository.UserRepository;
 import br.com.apirest_springboot.security.AccountCredentialsVo;
+import br.com.apirest_springboot.security.ValidateTokenVo;
 import br.com.apirest_springboot.security.jwt.JWTTokenProvider;
 import io.swagger.annotations.ApiOperation;
 
@@ -84,13 +85,13 @@ public class AuthController {
 			Authentication authentication = manager
 					.authenticate(new UsernamePasswordAuthenticationToken(username, pasword));
 
+			SecurityContextHolder.getContext().setAuthentication(authentication);
 
 			var user = repository.findByUsername(username);
 
 			var token = "";
 
 			if (user != null) {
-				SecurityContextHolder.getContext().setAuthentication(authentication);
 				token = provider.createToken(username, user.getRoles());
 			} else {
 				throw new UsernameNotFoundException("Username " + username + " not found!");
@@ -103,6 +104,17 @@ public class AuthController {
 		} catch (AuthenticationException e) {
 			throw new BadCredentialsException("Invalid username/password supplied!");
 		}
+	}
+
+	@ApiOperation(value = "Validate token")
+	@SuppressWarnings("rawtypes")
+	@PostMapping(value = "/validate", produces = { "application/json", "application/xml",
+			"application/x-yaml" }, consumes = { "application/json", "application/xml", "application/x-yaml" })
+	public ResponseEntity validate(@RequestBody ValidateTokenVo validate) {
+		boolean result = provider.validateToken(validate.getToken());
+		Map<Object, Object> model = new HashMap<>();
+		model.put("validate", result);
+		return ok(model);
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,36 +44,27 @@ public class BookController {
 	private BookServices service;
 	@Autowired
 	private PagedResourcesAssembler<BookVO> assembler;
-	
-	
-	 @PreAuthorize("hasRole('MANAGER')")
-	 // path params
+
+	@PreAuthorize("hasRole('ADMIN')")	
+	// path params
 	// @RequestMapping(method = RequestMethod.GET, produces =
 	// MediaType.APPLICATION_JSON_VALUE)
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
-	public ResponseEntity<?> findAll(
-			@RequestParam(value="page", defaultValue = "0") int page,
-			@RequestParam(value="limit", defaultValue = "12") int limit,
-			@RequestParam(value="direction", defaultValue = "asc") String direction) {
-		
+	public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "limit", defaultValue = "12") int limit,
+			@RequestParam(value = "direction", defaultValue = "asc") String direction) {
 
 		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
-		
+
 		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "title"));
-		
-		Page<BookVO> books =  service.findAll(pageable);
-		books
-			.stream()
-			.forEach(p -> p.add(
-					linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()
-				)
-			);
-		
+
+		Page<BookVO> books = service.findAll(pageable);
+		books.stream().forEach(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
+
 		PagedResources<?> resources = assembler.toResource(books);
-		
+
 		return new ResponseEntity<>(resources, HttpStatus.OK);
-	}	
-	
+	}
 
 	// path params
 	// @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces =

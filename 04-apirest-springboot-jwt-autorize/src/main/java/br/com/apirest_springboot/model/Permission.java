@@ -79,9 +79,4 @@ public class Permission implements GrantedAuthority, Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Permission [id=" + id + ", description=" + description + "]";
-	}
-
 }
